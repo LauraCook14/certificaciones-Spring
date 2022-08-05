@@ -44,4 +44,14 @@ public class Curso {
     public void setDescripcionCurso(String descripcionCurso) {
         this.descripcionCurso = descripcionCurso;
     }
+
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "Id=" + Id +
+                ", nombreCurso='" + nombreCurso + '\'' +
+                ", url='" + url + '\'' +
+                ", descripcionCurso='" + descripcionCurso + '\'' +
+                '}';
+    }
 }

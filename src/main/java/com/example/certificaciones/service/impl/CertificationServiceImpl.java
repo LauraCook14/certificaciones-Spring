@@ -2,13 +2,15 @@ package com.example.certificaciones.service.impl;
 
 import com.example.certicaciones.service.CertificationService;
 import com.example.certificaciones.modelo.Curso;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CertificationServiceImpl implements CertificationService {
-
-    public List<Curso> cursos() {
+  @Override
+    public List<Curso> getCursos() {
         List<Curso> listaCurso = new ArrayList<>();
       try{
           listaCurso.add(new Curso(1, "Curso para tomar curso", "https://softitlan.com/taskmanager/login/", "Bienvenido al curso, ya no seras calvo" ));
