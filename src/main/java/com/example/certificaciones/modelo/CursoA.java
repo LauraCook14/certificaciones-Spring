@@ -1,6 +1,8 @@
 package com.example.certificaciones.modelo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="cursos")
 public class CursoA {
    @Id
-   @Column(nullable = true)
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Integer idCurso;
 
    @Column(name = "nombreCurso")
@@ -20,9 +22,6 @@ public class CursoA {
     public CursoA() {
 
     }
-
-
-
     public Integer getIdCurso() {
         return idCurso;
     }
@@ -55,10 +54,4 @@ public class CursoA {
         this.descripcion = descripcion;
     }
 
-    public CursoA(Integer idCurso, String nombreCurso, String url, String descripcion) {
-        this.idCurso = idCurso; 
-        this.nombreCurso = nombreCurso;
-        this.url = url;
-        this.descripcion = descripcion;
-    }
 }

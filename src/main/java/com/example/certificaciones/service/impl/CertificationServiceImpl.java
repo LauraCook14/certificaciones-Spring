@@ -31,7 +31,10 @@ public class CertificationServiceImpl implements CertificationService {
     }
 
     public String insertCurso (){
-        CursoA nuevocurso = new CursoA(null,"Curso para tomar curso","https://softitlan.com/taskmanager/login/", "Bienvenido al curso, ya no seras calvo" );
+        CursoA nuevocurso = new CursoA(); 
+        nuevocurso.setNombreCurso("Corso de como tomar curso");
+        nuevocurso.setUrl("https://softitlan.com/taskmanager/");
+        nuevocurso.setDescripcion("Bienvenido al nuevo curso de tan tan tan");
         return cursorepositorio.insertarCurso(nuevocurso);
     }
 }
