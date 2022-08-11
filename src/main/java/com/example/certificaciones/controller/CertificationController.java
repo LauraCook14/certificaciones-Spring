@@ -5,6 +5,7 @@ import com.example.certificaciones.modelo.Curso;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +27,20 @@ public class CertificationController {
            throw new RuntimeException();
        }
        return curso.toString();
+    }
+
+    @PostMapping("/insertCurso")
+    public String insertCurso(){
+
+        String mensaje ="Sin ejecutar";
+
+        try{
+            mensaje = certificationService.insertCurso();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+          return mensaje;
     }
 
 }

@@ -8,5 +8,6 @@ import java.util.List;
 public interface CertificationService {
 
     public List<Curso> getCursos();
+    public String insertCurso ();
 
 }
