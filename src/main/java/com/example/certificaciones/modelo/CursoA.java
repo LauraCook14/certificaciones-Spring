@@ -1,19 +1,15 @@
 package com.example.certificaciones.modelo;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
 @Table(name="cursos")
 public class CursoA {
-   @Id
-   @Column(nullable = true)
-   private Integer idCurso;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+   private int id;
 
-   @Column(name = "nombreCurso")
-   private String nombreCurso;
+   private String nombrecurso;
    private String url;
    private String descripcion;
 
@@ -21,22 +17,20 @@ public class CursoA {
 
     }
 
-
-
-    public Integer getIdCurso() {
-        return idCurso;
+    public int getIdCurso() {
+        return id;
     }
 
-    public void setIdCurso(Integer idCurso) {
-        this.idCurso = idCurso;
+    public void setIdCurso(int idCurso) {
+        this.id = idCurso;
     }
 
-    public String getNombreCurso() {
-        return nombreCurso;
+    public String getNombrecurso() {
+        return nombrecurso;
     }
 
-    public void setNombreCurso(String nombreCurso) {
-        this.nombreCurso = nombreCurso;
+    public void setNombrecurso(String nombreCurso) {
+        this.nombrecurso = nombreCurso;
     }
 
     public String getUrl() {
@@ -55,10 +49,4 @@ public class CursoA {
         this.descripcion = descripcion;
     }
 
-    public CursoA(Integer idCurso, String nombreCurso, String url, String descripcion) {
-        this.idCurso = idCurso; 
-        this.nombreCurso = nombreCurso;
-        this.url = url;
-        this.descripcion = descripcion;
-    }
 }
