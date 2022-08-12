@@ -45,10 +45,18 @@ public class CertificationServiceImpl implements CertificationService {
 	public void updateCurso(Map<String,String> newCurso) {
 		CursoA curso = new CursoA(); 
 		if(newCurso.get("id")!=null) {
-			//curso = getCursoById(newCurso.get("id"));
+			curso = getCursoById(Integer.valueOf(newCurso.get("id")));
+			if(!curso.equals(newCurso)) {
+				if(newCurso.containsKey("nombre")) curso.setNombreCurso(newCurso.get("nombre"));
+				if(newCurso.containsKey("url")) curso.setUrl(newCurso.get("url"));
+				if(newCurso.containsKey("descripcion")) curso.setDescripcion(newCurso.get("descripcion"));
+				cursorepositorio.updateCurso(curso);
+			}else {
+				log.error("No hay cambios en el registro");
+			}
 			
 		}else {
-			log.info("Missing param {id]");
+			log.info("Missing param {id}");
 		}
 		
 	}
