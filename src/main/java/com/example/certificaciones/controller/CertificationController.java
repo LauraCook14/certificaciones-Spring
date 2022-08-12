@@ -63,5 +63,10 @@ public class CertificationController {
     	listaCursos = certificationService.getListCursos();
     	return listaCursos;
     }
+    
+    @PostMapping("/updateCurso")
+    public void updateCurso(@RequestBody Map<String,String> newCurso) {
+    	certificationService.updateCurso(newCurso);
+    }
 
 }
