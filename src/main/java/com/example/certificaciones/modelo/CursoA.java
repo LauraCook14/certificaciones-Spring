@@ -1,36 +1,41 @@
 package com.example.certificaciones.modelo;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
 @Table(name="cursos")
 public class CursoA {
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Id
-   private int id;
+   @Id
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
+   private Integer idCurso;
 
-   private String nombrecurso;
+   @Column(name = "nombreCurso")
+   private String nombreCurso;
    private String url;
    private String descripcion;
 
     public CursoA() {
 
     }
-
-    public int getIdCurso() {
-        return id;
+    public Integer getIdCurso() {
+        return idCurso;
     }
 
-    public void setIdCurso(int idCurso) {
-        this.id = idCurso;
+    public void setIdCurso(Integer idCurso) {
+        this.idCurso = idCurso;
     }
 
-    public String getNombrecurso() {
-        return nombrecurso;
+    public String getNombreCurso() {
+        return nombreCurso;
     }
 
-    public void setNombrecurso(String nombreCurso) {
-        this.nombrecurso = nombreCurso;
+    public void setNombreCurso(String nombreCurso) {
+        this.nombreCurso = nombreCurso;
     }
 
     public String getUrl() {

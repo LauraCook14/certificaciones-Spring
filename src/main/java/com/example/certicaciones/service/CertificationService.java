@@ -1,13 +1,23 @@
 package com.example.certicaciones.service;
 
 import com.example.certificaciones.modelo.Curso;
-import org.springframework.stereotype.Service;
+import com.example.certificaciones.modelo.CursoA;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CertificationService {
 
     public List<Curso> getCursos();
-    public String insertCurso ();
+    
+    public String insertCurso(Map<String,String> curso);
+    
+    public void deleteCurso(int idCurso);
+    
+    public void updateCurso(Map<String,String> newCurso);
+    
+    public List<CursoA> getListCursos();
+    
+    public CursoA getCursoById(int idCurso);
 
 }
