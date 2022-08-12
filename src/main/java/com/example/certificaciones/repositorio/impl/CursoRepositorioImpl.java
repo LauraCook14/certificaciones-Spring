@@ -31,4 +31,30 @@ public class CursoRepositorioImpl implements CursoRepositorio {
         return "Elemento insertado";
     }
 
+	@Override
+	public String deleteCurso(int idCurso) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateCurso(CursoA curso) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<CursoA> getListCursos() {
+		String queryString = "select * from cursos";
+        TypedQuery<CursoA> queryCursos = (TypedQuery<CursoA>) gestor.createNativeQuery(queryString, CursoA.class);
+        return queryCursos.getResultList();
+	}
+
+	@Override
+	public CursoA getCursoById(int idCurso) {
+		String queryString = "select * from cursos where id_curso = "+idCurso;
+        TypedQuery<CursoA> queryCursos = (TypedQuery<CursoA>) gestor.createNativeQuery(queryString, CursoA.class);
+        return queryCursos.getSingleResult();
+	}
+
 }

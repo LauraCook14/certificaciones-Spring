@@ -1,15 +1,20 @@
 package com.example.certificaciones.service.impl;
 
 import com.example.certicaciones.service.CertificationService;
+import com.example.certificaciones.controller.CertificationController;
 import com.example.certificaciones.modelo.Curso;
 import com.example.certificaciones.modelo.CursoA;
 import com.example.certificaciones.repositorio.CursoRepositorio;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
+@Slf4j
 @Service
 public class CertificationServiceImpl implements CertificationService {
    @Autowired
@@ -29,12 +34,49 @@ public class CertificationServiceImpl implements CertificationService {
       }
         return listaCurso;
     }
+  
+	@Override
+	public void deleteCurso(int idCurso) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public String insertCurso (){
-        CursoA nuevocurso = new CursoA(); 
-        nuevocurso.setNombreCurso("Corso de como tomar curso");
-        nuevocurso.setUrl("https://softitlan.com/taskmanager/");
-        nuevocurso.setDescripcion("Bienvenido al nuevo curso de tan tan tan");
+	@Override
+	public void updateCurso(Map<String,String> newCurso) {
+		CursoA curso = new CursoA(); 
+		if(newCurso.get("id")!=null) {
+			//curso = getCursoById(newCurso.get("id"));
+			
+		}else {
+			log.info("Missing param {id]");
+		}
+		
+	}
+
+	@Override
+	public List<CursoA> getListCursos() {
+		List<CursoA> listaCursos = new ArrayList<>();
+		listaCursos = cursorepositorio.getListCursos();
+		return listaCursos;
+	}
+
+	@Override
+	public CursoA getCursoById(int idCurso) {
+		CursoA curso = new CursoA();
+		curso = cursorepositorio.getCursoById(idCurso);
+		return curso;
+	}
+
+	@Override
+	public String insertCurso(Map<String,String> curso) {
+		CursoA nuevocurso = new CursoA();
+		try {
+			nuevocurso.setNombreCurso(curso.get("nombre"));
+	        nuevocurso.setUrl(curso.get("url"));
+	        nuevocurso.setDescripcion(curso.get("descripcion"));
+		}catch(Exception e) {
+			log.error("Error de parametros",e.getStackTrace());
+		}
         return cursorepositorio.insertarCurso(nuevocurso);
-    }
+	}
 }

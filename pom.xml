@@ -33,12 +33,10 @@
         </dependency>
 
 
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.24</version>
-                <scope>provided</scope>
-            </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
@@ -47,6 +45,13 @@
         </dependency>
 
     </dependencies>
+
+    <repositories>
+	    <repository>
+	        <id>projectlombok.org</id>
+	        <url>http://projectlombok.org/mavenrepo</url>
+	    </repository>
+	</repositories>
 
     <build>
         <plugins>
