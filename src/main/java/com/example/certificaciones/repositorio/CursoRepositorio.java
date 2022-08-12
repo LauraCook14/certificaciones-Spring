@@ -11,7 +11,7 @@ public interface CursoRepositorio {
 
     String insertarCurso (CursoA curso);
     
-    String deleteCurso(int idCurso);
+    int deleteCurso(int idCurso);
     
     String updateCurso(CursoA curso);
     

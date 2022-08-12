@@ -12,7 +12,7 @@ public interface CertificationService {
     
     public String insertCurso(Map<String,String> curso);
     
-    public void deleteCurso(int idCurso);
+    public int deleteCurso(int idCurso);
     
     public void updateCurso(Map<String,String> newCurso);
     

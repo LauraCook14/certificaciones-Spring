@@ -37,9 +37,15 @@ public class CursoRepositorioImpl implements CursoRepositorio {
     }
 
 	@Override
-	public String deleteCurso(int idCurso) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public int deleteCurso(int idCurso) {
+		int line = gestor.createNativeQuery("DELETE FROM cursos WHERE id = "+idCurso, CursoA.class).executeUpdate();
+		if (line != 0)
+			log.info("Elementos actualizados");
+		else
+			log.info("No se pudo ");
+
+		return line;
 	}
 
 	@Override

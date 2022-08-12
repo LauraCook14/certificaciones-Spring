@@ -36,9 +36,8 @@ public class CertificationServiceImpl implements CertificationService {
     }
   
 	@Override
-	public void deleteCurso(int idCurso) {
-		// TODO Auto-generated method stub
-		
+	public int deleteCurso(int idCurso) {
+	  return cursorepositorio.deleteCurso(idCurso);
 	}
 
 	@Override

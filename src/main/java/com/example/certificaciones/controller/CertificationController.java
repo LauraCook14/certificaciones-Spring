@@ -69,4 +69,9 @@ public class CertificationController {
     	certificationService.updateCurso(newCurso);
     }
 
+    @GetMapping("/deleteCurso")
+    public int deleteCurso(@RequestParam(value = "id") int idCurso){
+        return  certificationService.deleteCurso(idCurso);
+    }
+
 }
