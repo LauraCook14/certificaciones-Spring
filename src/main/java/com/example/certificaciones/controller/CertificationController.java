@@ -65,8 +65,10 @@ public class CertificationController {
     }
     
     @PostMapping("/updateCurso")
-    public void updateCurso(@RequestBody Map<String,String> newCurso) {
-    	certificationService.updateCurso(newCurso);
+    public String updateCurso(@RequestBody Map<String,String> newCurso) {
+        String mensaje;
+    	mensaje = certificationService.updateCurso(newCurso);
+        return mensaje;
     }
 
     @GetMapping("/deleteCurso")
