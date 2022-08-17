@@ -14,7 +14,7 @@ public interface CertificationService {
     
     public int deleteCurso(int idCurso);
     
-    public void updateCurso(Map<String,String> newCurso);
+    public String updateCurso(Map<String,String> newCurso);
     
     public List<CursoA> getListCursos();
     

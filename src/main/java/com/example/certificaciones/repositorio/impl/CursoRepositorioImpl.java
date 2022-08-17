@@ -58,7 +58,7 @@ public class CursoRepositorioImpl implements CursoRepositorio {
 		queryUpdate.setParameter("id", curso.getIdCurso());
 		int lineas = queryUpdate.executeUpdate();
 		log.info("Elementos actualizados >>>> {} {}",lineas, curso.toString());
-		return null;
+		return "Registros afectados: "+lineas;
 	}
 
 	@Override
@@ -74,5 +74,6 @@ public class CursoRepositorioImpl implements CursoRepositorio {
         TypedQuery<CursoA> queryCursos = (TypedQuery<CursoA>) gestor.createNativeQuery(queryString, CursoA.class);
         return queryCursos.getSingleResult();
 	}
+
 
 }
