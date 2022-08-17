@@ -1,4 +1,4 @@
-package com.example.certicaciones.service;
+package com.example.certificaciones.service;
 
 import com.example.certificaciones.modelo.Curso;
 import com.example.certificaciones.modelo.CursoA;

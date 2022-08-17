@@ -1,10 +1,10 @@
 package com.example.certificaciones.service.impl;
 
-import com.example.certicaciones.service.CertificationService;
 import com.example.certificaciones.controller.CertificationController;
 import com.example.certificaciones.modelo.Curso;
 import com.example.certificaciones.modelo.CursoA;
 import com.example.certificaciones.repositorio.CursoRepositorio;
+import com.example.certificaciones.service.CertificationService;
 
 import lombok.extern.slf4j.Slf4j;
 
