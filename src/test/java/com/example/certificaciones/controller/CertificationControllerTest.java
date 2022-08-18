@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
 
-import com.example.certicaciones.service.CertificationService;
+import com.example.certificaciones.service.CertificationService;
 import com.example.certificaciones.modelo.CursoA;
 
 

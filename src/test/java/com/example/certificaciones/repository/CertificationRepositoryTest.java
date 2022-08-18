@@ -2,11 +2,7 @@ package com.example.certificaciones.repository;
 
 
 import com.example.certificaciones.modelo.CursoA;
-import com.example.certificaciones.repositorio.CursoRepositorio;
 import com.example.certificaciones.repositorio.impl.CursoRepositorioImpl;
-import com.example.certificaciones.service.impl.CertificationServiceImpl;
-import org.hamcrest.Matchers;
-import org.hibernate.query.NativeQuery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -26,7 +22,6 @@ import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CertificationRepositoryTest {
-
     @Mock
     private EntityManager gestor;
     @InjectMocks
@@ -58,7 +53,7 @@ public class CertificationRepositoryTest {
 
         when(query.getResultList()).thenReturn(list);
 
-        List<CursoA> list2 = repositorio .listaCurso();
+        List<CursoA> list2 = repositorio.listaCurso();
 
         assertNotNull(list2);
         assertEquals(list2.size(),list.size());
@@ -70,28 +65,51 @@ public class CertificationRepositoryTest {
       CursoA cursoa = new CursoA();
 
       cursoa.setIdCurso(1);
-
-       // when(gestor.persist(ArgumentMatchers.isA())).thenReturn();
+      //Cando no se espera return de una llamada no es 
+      //necesario colocar la sentencia when**
+      String mensaje = repositorio.insertarCurso(cursoa);
+      
+      assertNotNull(mensaje);
+      assertEquals(mensaje, "Elemento insertado");
 
     }
 
     @Test
     public void deleteCursoTest(){
+        TypedQuery queryDelete = mock(TypedQuery.class);
 
+        when(gestor.createNativeQuery(ArgumentMatchers.anyString(), ArgumentMatchers.<Class<CursoA>>any())).thenReturn(queryDelete);
+        when(queryDelete.executeUpdate()).thenReturn(1);
+        
+        int rowAfected = repositorio.deleteCurso(6);
+        assertNotNull(rowAfected);
+        assertEquals(rowAfected, 1);
     }
 
     @Test
     public void updateCursoTest(){
-
-    }
-
-    @Test
-    public void getListCursosTest(){
-
+    	CursoA curso = new CursoA();
+    	curso.setIdCurso(1);
+    	curso.setNombreCurso("Nombre");
+    	curso.setDescripcion("Descripción");
+    	curso.setUrl("URl");
+    	TypedQuery query = mock(TypedQuery.class);
+    	when(gestor.createNativeQuery(ArgumentMatchers.anyString(), ArgumentMatchers.<Class<CursoA>>any())).thenReturn(query);
+    	when(query.executeUpdate()).thenReturn(1);
+    	String mensaje = repositorio.updateCurso(curso);
+    	assertNotNull(mensaje);
+    	assertEquals(mensaje,"Registros afectados: 1");
     }
 
     @Test
     public void getCursoById(){
-
+    	CursoA curso = new CursoA();
+    	TypedQuery query = mock(TypedQuery.class);
+    	when(gestor.createNativeQuery(ArgumentMatchers.anyString(), ArgumentMatchers.<Class<CursoA>>any())).thenReturn(query);
+    	when(query.getSingleResult()).thenReturn(curso);
+    	CursoA resultCurso = repositorio.getCursoById(1);
+    	
+    	assertNotNull(resultCurso);
+    	assertEquals(resultCurso,curso);
     }
 }

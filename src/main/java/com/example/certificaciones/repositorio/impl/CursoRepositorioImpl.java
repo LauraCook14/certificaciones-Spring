@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 @Repository
 public class CursoRepositorioImpl implements CursoRepositorio {
-
+	
     @PersistenceContext
     EntityManager gestor;
 
@@ -51,12 +51,8 @@ public class CursoRepositorioImpl implements CursoRepositorio {
 	@Override
 	@Transactional
 	public String updateCurso(CursoA curso) {
-		Query queryUpdate = gestor.createNativeQuery("update cursos set nombre_curso = :nombre, url = :url, descripcion = :descripcion where id_curso = :id", CursoA.class);
-		queryUpdate.setParameter("nombre", curso.getNombreCurso());
-		queryUpdate.setParameter("url", curso.getUrl());
-		queryUpdate.setParameter("descripcion", curso.getDescripcion());
-		queryUpdate.setParameter("id", curso.getIdCurso());
-		int lineas = queryUpdate.executeUpdate();
+		Query genericQuery = gestor.createNativeQuery("update cursos set nombre_curso = '"+curso.getNombreCurso()+"', url = '"+curso.getUrl()+"', descripcion = '"+curso.getDescripcion()+"' where id_curso = "+curso.getIdCurso(), CursoA.class);
+		int lineas = genericQuery.executeUpdate();
 		log.info("Elementos actualizados >>>> {} {}",lineas, curso.toString());
 		return "Registros afectados: "+lineas;
 	}

@@ -3,7 +3,6 @@ package com.example.certificaciones.service;
 import com.example.certificaciones.modelo.CursoA;
 import com.example.certificaciones.repositorio.CursoRepositorio;
 import com.example.certificaciones.service.impl.CertificationServiceImpl;
-import javafx.beans.binding.When;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -17,8 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.when;
 
 
