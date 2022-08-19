@@ -1,8 +1,8 @@
 package com.example.certificaciones.controller;
 
-import com.example.certicaciones.service.CertificationService;
 import com.example.certificaciones.modelo.Curso;
 import com.example.certificaciones.modelo.CursoA;
+import com.example.certificaciones.service.CertificationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,8 +65,10 @@ public class CertificationController {
     }
     
     @PostMapping("/updateCurso")
-    public void updateCurso(@RequestBody Map<String,String> newCurso) {
-    	certificationService.updateCurso(newCurso);
+    public String updateCurso(@RequestBody Map<String,String> newCurso) {
+        String mensaje;
+    	mensaje = certificationService.updateCurso(newCurso);
+        return mensaje;
     }
 
     @GetMapping("/deleteCurso")

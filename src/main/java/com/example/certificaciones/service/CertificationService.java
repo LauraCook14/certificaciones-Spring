@@ -1,4 +1,4 @@
-package com.example.certicaciones.service;
+package com.example.certificaciones.service;
 
 import com.example.certificaciones.modelo.Curso;
 import com.example.certificaciones.modelo.CursoA;
@@ -14,7 +14,7 @@ public interface CertificationService {
     
     public int deleteCurso(int idCurso);
     
-    public void updateCurso(Map<String,String> newCurso);
+    public String updateCurso(Map<String,String> newCurso);
     
     public List<CursoA> getListCursos();
     

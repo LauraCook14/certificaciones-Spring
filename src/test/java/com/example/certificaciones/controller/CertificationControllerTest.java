@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
-import com.example.certicaciones.service.CertificationService;
+import com.example.certificaciones.service.CertificationService;
 import com.example.certificaciones.modelo.CursoA;
 import org.springframework.beans.factory.annotation.Autowired;
 

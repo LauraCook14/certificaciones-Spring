@@ -1,10 +1,10 @@
 package com.example.certificaciones.service.impl;
 
-import com.example.certicaciones.service.CertificationService;
 import com.example.certificaciones.controller.CertificationController;
 import com.example.certificaciones.modelo.Curso;
 import com.example.certificaciones.modelo.CursoA;
 import com.example.certificaciones.repositorio.CursoRepositorio;
+import com.example.certificaciones.service.CertificationService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,15 +41,16 @@ public class CertificationServiceImpl implements CertificationService {
 	}
 
 	@Override
-	public void updateCurso(Map<String,String> newCurso) {
-		CursoA curso = new CursoA(); 
+	public String updateCurso(Map<String,String> newCurso) {
+		CursoA curso = new CursoA();
+		String mensaje = "No actualizado";
 		if(newCurso.get("id")!=null) {
 			curso = getCursoById(Integer.valueOf(newCurso.get("id")));
 			if(!curso.equals(newCurso)) {
 				if(newCurso.containsKey("nombre")) curso.setNombreCurso(newCurso.get("nombre"));
 				if(newCurso.containsKey("url")) curso.setUrl(newCurso.get("url"));
 				if(newCurso.containsKey("descripcion")) curso.setDescripcion(newCurso.get("descripcion"));
-				cursorepositorio.updateCurso(curso);
+				mensaje = cursorepositorio.updateCurso(curso);
 			}else {
 				log.error("No hay cambios en el registro");
 			}
@@ -57,7 +58,7 @@ public class CertificationServiceImpl implements CertificationService {
 		}else {
 			log.info("Missing param {id}");
 		}
-		
+		return mensaje;
 	}
 
 	@Override
