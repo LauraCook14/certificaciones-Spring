@@ -62,6 +62,7 @@ public class CursoRepositorioImpl implements CursoRepositorio {
 	}
 
 	@Override
+	@Transactional
 	public List<CursoA> getListCursos() {
 		String queryString = "select * from cursos";
         TypedQuery<CursoA> queryCursos = (TypedQuery<CursoA>) gestor.createNativeQuery(queryString, CursoA.class);
